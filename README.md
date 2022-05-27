@@ -1,6 +1,6 @@
 # AG-TEST
 
-Changes from Test.js
+Changes from CodeTest
 
 - Rewrote to ES6 Class
 - Refactored duplicate code
