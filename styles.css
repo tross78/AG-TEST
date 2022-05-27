@@ -29,10 +29,23 @@
   .product__heading {
     font-size: 22px;
     margin-bottom: 4px;
+    text-align: center;
   }
   .product__description {
     font-size: 13px;
     color: #bbb;
+    text-align: center;
+  }
+
+  .product__image img {
+    display:block;
+    margin:auto;
+    height: 150px;
+  }
+
+  .features {
+    margin: 0 auto;
+    display: block;
   }
 
 /* Extra small devices (phones, 600px and down) */

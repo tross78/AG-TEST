@@ -31,7 +31,7 @@ function processData(pokemon) {
             abilityData.map((element, index) => {
                 featuresData.push({id: `${pokeData.id}-feature${index}`, text:  element.ability.name});
             });
-            new Product(productElement, pokeData.name, `PokeDex #${pokeData.id}`, featuresData);
+            new Product(productElement, pokeData.name, `PokeDex #${pokeData.id}`, pokeData.sprites.front_default, featuresData);
         })
 }
 
@@ -44,14 +44,22 @@ function generateProduct() {
     var productsContainer = document.getElementById("products");
     var productElement = document.createElement("div");
     productElement.classList.add("product");
+
     var productHeading = document.createElement("h1");
     productHeading.classList.add("product__heading");
     productElement.appendChild(productHeading);
-    var productDescription = document.createElement("p");
+
+    var productDescription = document.createElement("div");
     productDescription.classList.add("product__description");
     productElement.appendChild(productDescription);
+
+    var productImage = document.createElement("div");
+    productImage.classList.add("product__image");
+    productElement.appendChild(productImage);
+
     var productFeatures = document.createElement("div");
     productFeatures.classList.add("features");
+
     productElement.appendChild(productFeatures);
     productsContainer.appendChild(productElement);
     return productElement;

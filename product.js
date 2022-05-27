@@ -6,13 +6,14 @@ export default class Product {
      * The description text will add description content as a new paragraph
      * The features provided will add the features as list items with an attribute "dataFeatureId"
      */
-    constructor(productElement, headingText, descriptionText, features) {
+    constructor(productElement, headingText, descriptionText, image, features) {
 
         // Object to hold the elements
         this.$elems = {
             product: null,
             heading: null,
             description: null,
+            image: null,
             features: null
         };
 
@@ -21,9 +22,10 @@ export default class Product {
             product: 'product',
             productHeading: 'product__heading',
             productDescription: 'product__description',
+            productImage: 'product__image',
             features: 'features',
             featureItem: 'features__item',
-            dataFeatureId: 'data-feature-id'
+            dataFeatureId: 'data-feature-id',
         };
 
         // instantiating the objects with the dom elements
@@ -45,6 +47,13 @@ export default class Product {
 
             $newP.appendChild(textNode);
             this.$elems.description.appendChild($newP);
+        }
+
+        // checking if the image content supplied is valid and the dom element is present before assigning the image content
+        if (this.IsValid(this.$elems.image) && this.IsValid(image)) {
+            var $img = document.createElement("img");
+            $img.src = image;
+            this.$elems.image.appendChild($img);
         }
 
         // checking if the list content supplied is valid and the dom element is present before assigning the feature content
