@@ -1,6 +1,9 @@
 import Product from "./product.js";
 
 async function init() {
+    /**
+     * Pull in random Pokemon data to populate products
+     */
     var offset = Math.floor(Math.random() * 1000);
     var limit = 5;
     var url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
@@ -14,6 +17,10 @@ async function init() {
 }
 
 function processData(pokemon) {
+    /**
+     * Since each result only has a url to each pokemon
+     * we have to fetch results for each one
+     */
     let url = pokemon.url;
     fetch(url)
         .then(response => response.json())
@@ -27,6 +34,11 @@ function processData(pokemon) {
             new Product(productElement, pokeData.name, `PokeDex #${pokeData.id}`, featuresData);
         })
 }
+
+/**
+ * 
+ * @returns Generated product DOM element
+ */
 
 function generateProduct() {
     var productsContainer = document.getElementById("products");
